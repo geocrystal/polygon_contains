@@ -1,4 +1,5 @@
 require "./spec_helper"
+require "json"
 
 describe PolygonContains do
   describe ".contains?" do
@@ -349,6 +350,31 @@ describe PolygonContains do
       ]
       point = {1.5, 1.5}
       PolygonContains.contains?(polygon, point).should be_false
+    end
+
+    it "returns true for Kyiv coordinate within Ukraine polygon" do
+      # Load Ukraine polygon from JSON file
+      json_file = File.read("spec/data/Europe-Kyiv-tz.json")
+      json_data = JSON.parse(json_file)
+
+      # Extract coordinates from JSON (GeoJSON Polygon format)
+      # coordinates structure: [[[lon, lat], [lon, lat], ...]] (array of rings, each ring is array of coords)
+      coords_array = json_data["coordinates"].as_a[0].as_a
+
+      # Convert array format [lon, lat] to tuple format {lon, lat}
+      # The polygon should already be closed (first and last points are the same)
+      polygon_ring = coords_array.map do |coord|
+        coord_array = coord.as_a
+        {coord_array[0].as_f, coord_array[1].as_f}
+      end
+
+      polygon = [polygon_ring]
+
+      # Kyiv coordinates: approximately 30.5241°E, 50.4501°N
+      # Testing with the capital city of Ukraine, which should definitely be within the country boundaries
+      kyiv_point = {30.5241, 50.4501}
+
+      PolygonContains.contains?(polygon, kyiv_point).should be_true
     end
   end
 end

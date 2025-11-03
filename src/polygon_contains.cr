@@ -27,11 +27,11 @@ module PolygonContains
   def self.contains?(polygon : Array(Array(Point)), point : Point) : Bool
     # Convert degrees to radians for internal processing
     polygon_rad = polygon.map do |ring|
-      ring.map do |coord|
-        {deg_to_rad(coord[0]), deg_to_rad(coord[1])}
-      end
+      ring.map { |coord| {deg_to_rad(coord[0]), deg_to_rad(coord[1])} }
     end
+
     point_rad = {deg_to_rad(point[0]), deg_to_rad(point[1])}
+
     Spherical.contains?(polygon_rad, point_rad)
   end
 

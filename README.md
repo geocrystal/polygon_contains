@@ -74,7 +74,7 @@ PolygonContains.contains?(polygon, {0.0, 0.0}) # => false
 
 ## Algorithm
 
-This library implements a hybrid spherical point-in-polygon algorithm that combines angle sum and winding number methods for robust containment testing on the surface of a sphere.
+This library implements a spherical point-in-polygon algorithm using the winding number method for robust containment testing on the surface of a sphere.
 
 ### Complexity
 

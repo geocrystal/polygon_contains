@@ -79,7 +79,7 @@ This library implements a spherical point-in-polygon algorithm using the winding
 ### Complexity
 
 - **Time Complexity**: O(n) where n is the total number of vertices in all rings
-- **Space Complexity**: O(1) additional space
+- **Space Complexity**: O(n) additional space for coordinate conversion from degrees to radians
 
 ### Coordinate System
 

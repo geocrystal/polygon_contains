@@ -1,5 +1,10 @@
 # polygon_contains
 
+[![Crystal CI](https://github.com/geocrystal/polygon_contains/actions/workflows/crystal.yml/badge.svg)](https://github.com/geocrystal/polygon_contains/actions/workflows/crystal.yml)
+[![GitHub release](https://img.shields.io/github/release/geocrystal/polygon_contains.svg)](https://github.com/geocrystal/polygon_contains/releases)
+[![License](https://img.shields.io/github/license/geocrystal/polygon_contains.svg)](https://github.com/geocrystal/geojson/blob/main/LICENSE)
+
+
 A Crystal library for determining if a point lies within a spherical polygon. This library performs point-in-polygon tests on the surface of a sphere (e.g., Earth), using spherical geometry rather than planar approximations.
 
 ## Installation

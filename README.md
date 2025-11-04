@@ -74,7 +74,13 @@ PolygonContains.contains?(polygon, {0.0, 0.0}) # => false
 
 ## Algorithm
 
-This library implements a spherical point-in-polygon algorithm using the winding number method for robust containment testing on the surface of a sphere.
+This library implements the **Spherical Winding Number Method** for point-in-polygon testing on the surface of a sphere (e.g., Earth). The algorithm counts geodesic edge crossings over the test point's meridian and determines containment based on whether the winding number is odd (inside) or even (outside).
+
+The implementation is based on Chamberlain & Duquette (2007) and D3-Geo, providing robust handling of:
+- Antimeridian crossings (edges crossing 180°/-180° meridian)
+- Points near poles
+- Complex polygons with holes
+- Very large polygons
 
 ### Complexity
 
